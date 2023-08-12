@@ -6,14 +6,14 @@ def calculate(*args):
         value = float(lbs.get())
         weight = (value / 2.2)
         kgs.set(round(weight, 2))
-        mindose.set(round((float(kgs.get()) * 10 / 160 * 5), 2))
-        maxdose.set(round((float(kgs.get()) * 15 / 160 * 5), 2))
-        dailydose.set(round((float(kgs.get()) * 75) / 160 * 5, 2))
+        mindose.set(min(round((float(kgs.get()) * 10 / 160 * 5), 1), 15.6))
+        maxdose.set(min(round((float(kgs.get()) * 15 / 160 * 5), 1), 23.4))
+        dailydose.set(min(round((float(kgs.get()) * 75) / 160 * 5, 1), 93.7))
     except ValueError:
         pass
 
 root = Tk()
-root.title("Weight-Based Acetaminophen Dosing")
+root.title("Weight-Based Acetaminophen Dosing for OTC 160 mg/ml Solution")
 rb = 'rosybrown1'
 ttk.Style().configure(root, background=rb)
 mainframe = ttk.Frame(root, padding="4 3 12 12")
